@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import User from './Components/User';
 import UserForm from './Components/UserForm';
+import UserList from './Components/UserList';
+import './App.css'
 
 class App extends Component {
     constructor(props) {
@@ -11,25 +12,43 @@ class App extends Component {
     }
 
     handleAddUser = (newUser) => {
+        newUser.id = Math.random().toString();
         this.setState({ 
             users: [newUser, ...this.state.users] 
         })
     }
 
-    render() {
-        const users = this.state.users.map((user, index) => {
-            return (
-                <User user={user} index={index} />
-            )
-        })
-
-        return (
-           <div style={{ margin: "40px" }}>
-                <UserForm addUser={this.handleAddUser} />
-                {users}
-            </div>
-        );
+     handleDeleteUser =(userId)=> {
+      const savedusers = this.state.users.filter(
+            (user)=>{
+               return user.id !==userId;
+            })
+            this.setState({users: savedusers})
     }
-}
+
+
+    handleEditUser = (updatedUser) => {
+        this.setState({
+          users: this.state.users.map((user) =>
+            user.id === updatedUser.id ? updatedUser : user
+          ),
+        });
+      };
+
+      render() {
+        return (
+          <div>
+           <UserForm addUser = {this.handleAddUser}/>
+           <UserList
+              users={this.state.users}
+              deleteUser = {this.handleDeleteUser}
+              editUser = {this.handleEditUser}
+           
+           />
+      
+          </div>
+        );
+      }
+    }
 
 export default App; 
