@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './Form.css'
 
 class UserForm extends Component {
         constructor(props) {
@@ -6,7 +7,7 @@ class UserForm extends Component {
             this.state = {
                 name: "",
                 email: "",
-                gen: ""
+                number: ""
             }
         }
     
@@ -20,15 +21,15 @@ class UserForm extends Component {
             this.setState({
                 name: "",
                 email: "",
-                gen: ""
+                number: ""
             })
         }
     
     
     render() {
         return (
-            <div>
-                 <form onSubmit={this.handleSubmit}>
+            <div style = {{textAlign: "center"}}>
+                 <form onSubmit={this.handleSubmit}>  
                 <div className="form-control">
                     <label htmlFor="name">Name</label>
                     <input
@@ -38,6 +39,7 @@ class UserForm extends Component {
                         onChange={this.handleChange}
                     />
                 </div>
+                <br></br>
                 <div className="form-control">
                     <label htmlFor="email">Email</label>
                     <input
@@ -47,17 +49,19 @@ class UserForm extends Component {
                         onChange={this.handleChange}
                     />
                 </div>
+                <br></br>
                 <div className="form-control">
-                    <label htmlFor="gen">Gen</label>
+                    <label htmlFor="number">Number</label>
                     <input
                         type="number"
-                        name="gen"
+                        name="number"
                         value={this.state.gen}
                         onChange={this.handleChange}
                     />
                 </div>
+                <br></br>
                 <div className="form-control">
-                    <button type="submit">Add user</button>
+                    <button type="submit">Submit</button>
                 </div>
             </form>
             </div>
