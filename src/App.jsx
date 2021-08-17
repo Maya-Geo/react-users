@@ -4,17 +4,10 @@ import UserList from './Components/UserList';
 import './App.css'
 
 class App extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            users: []
-        }
-    }
-
     handleAddUser = (newUser) => {
         newUser.id = Math.random().toString();
         this.setState({ 
-            users: [newUser, ...this.state.users] 
+          users: [...this.state.users, newUser] 
         })
     }
 
@@ -39,12 +32,7 @@ class App extends Component {
         return (
           <div>
            <UserForm addUser = {this.handleAddUser}/>
-           <UserList
-              users={this.state.users}
-              deleteUser = {this.handleDeleteUser}
-              editUser = {this.handleEditUser}
-           
-           />
+           <UserList/>
       
           </div>
         );
