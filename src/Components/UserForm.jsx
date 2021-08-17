@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import './Form.css'
+import {addUser} from '../Actions/UserAction'
+import {connect} from  'react-redux'
 
 class UserForm extends Component {
         constructor(props) {
@@ -17,7 +19,8 @@ class UserForm extends Component {
     
         handleSubmit = (e) => {
             e.preventDefault();
-            this.props.addUser(this.state);
+            this.props.addNewUser(this.state);
+
             this.setState({
                 name: "",
                 email: "",
@@ -51,10 +54,10 @@ class UserForm extends Component {
                 </div>
                 <br></br>
                 <div className="form-control">
-                    <label htmlFor="number">Number</label>
+                    <label htmlFor="gen">Gen</label>
                     <input
                         type="number"
-                        name="number"
+                        name="gen"
                         value={this.state.gen}
                         onChange={this.handleChange}
                     />
@@ -69,4 +72,8 @@ class UserForm extends Component {
     }
 }
 
-export default UserForm;
+  const mapDispatchToProps = {
+     addNewUser: addUser
+ }
+
+export default connect(null, mapDispatchToProps)(UserForm);
