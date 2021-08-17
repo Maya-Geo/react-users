@@ -8,7 +8,7 @@ const User = ({user,deleteUser, editUser}) => {
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
-    const handleDelete = (event)=> {
+    const handleDelete = (e) => {
         deleteUser(user.id)
     }
 
@@ -18,7 +18,7 @@ const User = ({user,deleteUser, editUser}) => {
             <div className="user">
             <h3>Name: {user.name}</h3>
             <p>Email: {user.email}</p>
-            <p>Number: {user.number}</p>
+            <p>Gen: {user.Gen}</p>
 
             <Button variant="primary" onClick={handleShow}>Edit</Button>{' '} 
             <br></br>
