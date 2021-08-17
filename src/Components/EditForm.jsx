@@ -49,11 +49,11 @@ class EditForm extends Component {
                 />
             </div>
             <div className="form-control">
-                <label htmlFor="gen">Number:</label>
+                <label htmlFor="gen">Gen:</label>
                 <input
                     type="number"
-                    name="number"
-                    value={this.state.number}
+                    name="gen"
+                    value={this.state.gen}
                     onChange={this.handleChange}
                 />
             </div>
