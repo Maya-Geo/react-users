@@ -1,5 +1,6 @@
 import React from 'react';
 import User from "./User"
+import {connect} from "react-redux"
 
 const UserList = ({users,deleteUser,editUser}) => {
 
@@ -16,10 +17,14 @@ const UserList = ({users,deleteUser,editUser}) => {
           )
         }
      )
-     return <div>{userList}</div>
-         
-    
+     return <div>{userList}</div>    
    
 }
 
-export default UserList;
+  const mapStateToProps =(state)=>{
+    return{
+    users: state.users
+  }
+}
+
+export default connect(mapStateToProps) (UserList);
