@@ -2,6 +2,8 @@ import React, {useState} from 'react';
 import EditForm from "./EditForm"
 import Modal from "react-bootstrap/Modal";
 import Button from 'react-bootstrap/Button';
+import {connect} from 'react-redux'
+import {deleteUser} from "../Actions/UserAction";
 
 const User = ({user,deleteUser, editUser}) => {
     const [show, setShow] = useState(false);
@@ -45,4 +47,8 @@ const User = ({user,deleteUser, editUser}) => {
     );
 }
 
-export default User;
+   const mapDispatchToProps ={
+     deleteUser: deleteUser
+   }
+
+export default connect (null,mapDispatchToProps) (User);
