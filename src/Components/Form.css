@@ -1,6 +1,7 @@
 form{
-    background-color: gainsboro;
+    background-color: rgba(220, 220, 220, 0.952);
     box-shadow: 1px 2px 5px rgb(61, 59, 61);
+    padding: 24px;
     border: none;
     text-align: center;
     align-items:center;
