@@ -12,6 +12,7 @@ const User = ({user,deleteUser, editUser}) => {
 
     const handleDelete = (e) => {
         deleteUser(user.id)
+      
     }
 
 
