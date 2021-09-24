@@ -21,8 +21,13 @@ const UsersReduce = (state = initialState, action) => {
             const savedUsers = state.users.filter((user) => {
               return user.id !== action.payload;
             });
-            return {...state, users: savedUsers};
 
+            return {...state, users: savedUsers};
+            
+            case'SET_ALL_USERS':
+            console.log(action.payload)
+            return {...state, users: action.payload};
+                 
 
         default:
         return state;
