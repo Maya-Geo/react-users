@@ -8,7 +8,8 @@ export const addUser = (user) =>{
     
     return(dispatch,state,{getFirestore})=>{
         const db = getFirestore();
-        db.collection("users").add(user).then(
+        db.collection("users")  .add({...user, timestamp: getFirestore().FieldValue.serverTimestamp()})
+        .then(
             (docs)=>{
                 console.log(docs)
             })
@@ -27,9 +28,22 @@ export const addUser = (user) =>{
 
 export const editUser = (updatedUser)=> {
     
-    return {
-        type: "EDIT_USER",
-        updatedUser : updatedUser
+    return(dispatch, state, {getFirestore})=>{
+      getFirestore().collection("users").doc(updatedUser.id).set(updatedUser)
+      .then(
+          ()=> {
+              console.log("Successfuly updated")
+          }
+      )
+      .catch(
+          (error)=> {
+              console.error("Remove Users", error);
+          }
+      )
+
+      
+        // type: "EDIT_USER",
+        // updatedUser : updatedUser
     }
    
     
@@ -38,20 +52,30 @@ export const editUser = (updatedUser)=> {
 
 export const deleteUser = (id) => {
     
-    return {
-        type: "DELETE_USER",
-         payload: id
+    return (dispatch, state, {getFirestore})=>{
+      getFirestore().collection("users").doc(id).delete().then(() => {
+        console.log("Users deleted!");
+    }).catch((error) => {
+        console.error("Removed Users: ", error);
+    });
+}
+      
+        // type: "DELETE_USER",
+        //  payload: id
       }
    
     
-}
+
 
 export const getAllUsers = () => {
     return(dispatch, state, {getFirestore}) =>{
-      getFirestore().collection("users").onSnapshot((snapshot)=>{
-        let users = [];
-        snapshot.forEach((doc) =>{
-          users.push(doc.data())
+      getFirestore().collection("users").orderBy("timestamp", "desc")
+      .onSnapshot(
+          (snapshot)=> {
+              let users = []
+              snapshot.forEach(
+                  (doc)=> {users.push({...doc.data(),id:doc.id })  //adding an id to see the users being added//
+
         })
         
       dispatch({
