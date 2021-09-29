@@ -74,7 +74,7 @@ export const getAllUsers = () => {
           (snapshot)=> {
               let users = []
               snapshot.forEach(
-                  (doc)=> {users.push({...doc.data(),id:doc.id })  //adding an id to see the users being added//
+                  (doc)=> {users.push({...doc.data(),id:doc.id })  //adding an id//
 
         })
         
