@@ -20,7 +20,7 @@ class EditForm extends Component {
     
    handleSubmit =(e) => {
        e.preventDefault();
-       this.props.editNewUser(this.state)
+       this.props.editUser(this.state)
        this.setState({
            name: "",
            email: "",
@@ -34,7 +34,7 @@ class EditForm extends Component {
     return (
         <form onSubmit={this.handleSubmit} className ="editform">
             <div className="form-control">
-                <label htmlFor="name">Name:</label>
+                 <label htmlFor="name">Name:</label>
                 <input
                     type="text"
                     name="name"
