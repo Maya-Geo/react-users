@@ -3,12 +3,12 @@ export const Edit_User = "EDIT_USER"
 export const DELETE_USER ="DELETE_USER"
 
 export const addUser = (user) =>{
-    user.id = Math.random().toString();
+    // user.id = Math.random().toString();
 
     
     return(dispatch,state,{getFirestore})=>{
-        const db = getFirestore();
-        db.collection("users")  .add({...user, timestamp: getFirestore().FieldValue.serverTimestamp()})
+        getFirestore()
+        .collection("users")  .add({...user, timestamp: getFirestore().FieldValue.serverTimestamp()})
         .then(
             (docs)=>{
                 console.log(docs)
@@ -29,7 +29,7 @@ export const addUser = (user) =>{
 export const editUser = (updatedUser)=> {
     
     return(dispatch, state, {getFirestore})=>{
-      getFirestore().collection("users").doc(updatedUser.id).set(updatedUser)
+      getFirestore().collection("users").doc(updatedUser.id).update(updatedUser)
       .then(
           ()=> {
               console.log("Successfuly updated")
@@ -54,7 +54,7 @@ export const deleteUser = (id) => {
     
     return (dispatch, state, {getFirestore})=>{
       getFirestore().collection("users").doc(id).delete().then(() => {
-        console.log("Users deleted!");
+        console.log("Users deleted");
     }).catch((error) => {
         console.error("Removed Users: ", error);
     });
@@ -74,7 +74,7 @@ export const getAllUsers = () => {
           (snapshot)=> {
               let users = []
               snapshot.forEach(
-                  (doc)=> {users.push({...doc.data(),id:doc.id })  //adding an id//
+                  (doc)=> {users.push({...doc.data(),id:doc.id })  //added an id//
 
         })
         
