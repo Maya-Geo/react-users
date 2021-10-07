@@ -37,6 +37,7 @@ class UserForm extends Component {
     
     render() {
         return (
+
             <div style = {{textAlign: "center"}}>
                  <form onSubmit={this.handleSubmit}>  
                 <div className="form-control">
