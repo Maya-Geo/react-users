@@ -11,7 +11,7 @@ const Router = () => {
       <BrowserRouter>
        <div className="nav">
        <Link className="hom" to="/">Home</Link>
-      <Link className="res" to = "/register">Register</Link>
+      {/* <Link className="res" to = "/register">Register</Link> */}
       <Link className="log" to = "/login">Login</Link>
     </div>
       
