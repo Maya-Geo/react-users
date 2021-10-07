@@ -7,7 +7,7 @@ html{
 }
 
 .hom{
-  font-size: 20px;
+  font-size: 15px;
   cursor: pointer;
   border: 1px solid #fff;
   padding: 10px 20px;
@@ -16,7 +16,7 @@ html{
 
 
 .res{
-  font-size: 20px;
+  font-size: 15px;
   cursor: pointer;
   border: 1px solid #fff;
   padding: 10px 10px;
@@ -24,7 +24,7 @@ html{
 }
 
 .log{
-  font-size: 20px;
+  font-size: 15px;
   cursor: pointer;
   border: 1px solid #fff;
   padding: 10px 10px;
