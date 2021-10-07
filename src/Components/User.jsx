@@ -17,11 +17,11 @@ const User = ({user,deleteUser, editUser}) => {
 
 
     return (
-        <div style = {{textAlign: "center"}}>
-            <div className="user">
+        <div style = {{textAlign: "center" }}>
+            <div className="user col-md-3">
             <h3>Name: {user.name}</h3>
             <p>Email: {user.email}</p>
-            <p>Gen: {user.Gen}</p>
+            <p>Gen: {user.gen}</p>
 
             <Button variant="primary" onClick={handleShow}>Edit</Button>{' '} 
             <br></br>
