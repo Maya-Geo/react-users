@@ -1,0 +1,16 @@
+.head{
+    background-color: moccasin;
+    box-shadow: 1px 2px 5px rgb(61, 59, 61);
+    padding: 24px;
+    border: none;
+    text-align: center;
+    align-items:center;
+    border-radius: 50px;
+    margin: 60px;
+    width: 50%;
+    height: 20rem;
+}  
+
+input{
+    margin-bottom: 20px;
+}
