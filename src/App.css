@@ -1,3 +1,32 @@
 html{
   overflow: hidden;
 }
+
+.nav{
+  text-align: center;
+}
+
+.hom{
+  font-size: 20px;
+  cursor: pointer;
+  border: 1px solid #fff;
+  padding: 10px 20px;
+
+}
+
+
+.res{
+  font-size: 20px;
+  cursor: pointer;
+  border: 1px solid #fff;
+  padding: 10px 10px;
+
+}
+
+.log{
+  font-size: 20px;
+  cursor: pointer;
+  border: 1px solid #fff;
+  padding: 10px 10px;
+
+}
