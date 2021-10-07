@@ -2,6 +2,7 @@
 import {connect} from 'react-redux'
 import React, { Component } from 'react';
 import { editUser } from '../Actions/UserAction';
+import './EditForm.css'
 
 class EditForm extends Component {
    constructor(props){
