@@ -12,7 +12,7 @@ export const addUser = (user) =>{
         .then(
             (docs)=>{
                 console.log(docs)
-            })
+        })
 
 
         .catch((err) => console.log(err));
