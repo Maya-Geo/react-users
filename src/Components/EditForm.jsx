@@ -23,7 +23,7 @@ class EditForm extends Component {
        e.preventDefault();
        this.props.editUser(this.state)
        this.setState({
-           name: "",
+           name: "", 
            email: "",
            number: "",
        })
