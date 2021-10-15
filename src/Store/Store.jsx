@@ -11,7 +11,7 @@ import firebase from "../Firebase/Config"
 
 
 let reducers = combineReducers({
-    user: UsersReduce,
+    userState: UsersReduce,
     firebase: firebaseReducer,
     auth: authReducer,
   });
