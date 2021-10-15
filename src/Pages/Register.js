@@ -1,21 +1,29 @@
-import React from "react";
+import React, {connect} from "react-redux";
 import { useDispatch } from "react-redux";
 import './Sign.css'
-import { registerUserWithEmail,} from "../Actions/AuthActions";
+import { registerUserWithEmail, loginWithGoogle} from "../Actions/AuthActions";
 
-const Register= () =>{
+
+const Register = (props) => {
   const dispatch = useDispatch();
+  // if(!props.auth.isLoaded) return null;
+  if(props.auth.uid) props.history.push('/')
+
+
 
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
     let email = e.target.elements.email.value;
     let password = e.target.elements.password.value;
-
-    dispatch( registerUserWithEmail(email,password));
+    dispatch(registerUserWithEmail(email, password));
   };
 
+
+  const authWithGoogle = (e) => {
+    e.preventDefault();
+    dispatch(loginWithGoogle());
+  };
 
   return (  
     <div>
@@ -24,17 +32,29 @@ const Register= () =>{
         <label>Email</label>
         <input name="email" type="email" />
         <br></br>
-        <label>Password</label>
+        <label>Passrd</label>
         <input name="password" type="password" />
         <hr />
         <button type="submit" className="btn-primary">
           Submit
         </button>
 
-           {/* <button>Sign in with Google</button> */}
+           <button onClick={authWithGoogle}>Sign in with Google </button > 
       </form>
     </div>
   );
 }
 
-export default Register;
+
+const mapStateToProps = (state) => {
+  return {
+    auth:state.firebase.auth
+  }
+}
+
+
+const mapDispatchToProps = {
+  registerUserWithEmail,
+}
+
+export default connect (mapStateToProps, mapDispatchToProps) (Register);
