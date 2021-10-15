@@ -1,23 +1,26 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { useHistory } from "react-router-dom";
 import { connect, useDispatch } from "react-redux";
-import {loginWIthEmail,} from "../Actions/AuthActions";
+import {loginWIthEmail, loginWithGoogle} from "../Actions/AuthActions";
 import './Log.css'
 
-function Login(props) {
+
+const Login = (props) => {
   const dispatch = useDispatch();
-  const { replace } = useHistory();
+  // if(!props.auth.isLoaded) return null;
+  if(props.auth.uid) props.history.push('/')
+
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
     let email = e.target.elements.email.value;
     let password = e.target.elements.password.value;
-
-    dispatch(loginWIthEmail(email, password, replace));
+    dispatch(loginWIthEmail(email, password));
   };
-
+  const authWithGoogle = (e) => {
+    e.preventDefault();
+    dispatch(loginWithGoogle());
+  };
 
   return (
     <div>
@@ -29,7 +32,7 @@ function Login(props) {
         <label>Password</label>
         <input name="password" type="password" />
         <hr />
-        <button type="submit" className="btn-primary">
+        <button  type="submit" className="btn-primary" onClick={authWithGoogle}>
           Login 
         </button>
 
@@ -41,8 +44,11 @@ function Login(props) {
   );
 }
 
-const mapSTateToProps = (state) => ({
-  isAuth: state.auth.isAuth,
-});
+const mapStateToProps = (state) => {
+  return {
+    auth:state.firebase.auth
+  }
+}
 
-export default connect(mapSTateToProps)(Login);
+
+export default connect(mapStateToProps)(Login);
